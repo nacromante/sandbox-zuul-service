@@ -1,0 +1,23 @@
+server:
+    port: 8080
+spring:
+  application:
+    name: zuul-service
+zuul:
+  prefix: /services
+  routes:
+    studants:
+        path: /studants/**
+        service-id: STUDANTS-SERVICE
+    courses:
+        path: /courses/**
+        service-id: COURSES-SERVICE
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+    
